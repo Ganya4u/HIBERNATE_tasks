@@ -31,6 +31,8 @@ public class Delete2 {
 			for (Movies movies2 :  moviesCopy) {
 				
 				if(movies2.getTitle().equals("Pushpa")) {
+
+					 // First remove the link, then remove the data — and never change a list while looping over it.
 					
 					actors.getMovies().remove(movies2);  // First remove the movie from the actor's collection
 					
@@ -46,3 +48,4 @@ public class Delete2 {
 	}
 
 }
+
