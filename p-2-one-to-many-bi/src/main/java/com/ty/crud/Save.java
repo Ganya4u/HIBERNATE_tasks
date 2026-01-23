@@ -1,0 +1,55 @@
+package com.ty.crud;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.ty.entity.Account;
+import com.ty.entity.Bank;
+
+
+public class Save {
+
+	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		
+		//  New bank and New accounts
+		
+  	Bank bank = new Bank(3, "XX", "Mumbai");
+		
+		Account a1 = new Account(31, 52000);
+		Account a2 = new Account(32, 57000);
+
+		Account a3 = new Account(33, 42000);
+		
+		a1.setBank(bank);
+		a2.setBank(bank);
+		a3.setBank(bank);
+		
+		et.begin();
+		em.persist(bank);
+		em.persist(a1);
+		em.persist(a2);
+		em.persist(a3);
+		et.commit();
+		
+		// new account in existing bank
+//
+//				Bank bank = em.find(Bank.class, 1);
+//
+//				Account a4 = new Account(14, 50000);
+//				a4.setBank(bank);
+//
+//				et.begin();
+//				em.persist(a4);
+//				et.commit();
+		
+		System.out.println("Saved");
+
+
+	}
+
+}
